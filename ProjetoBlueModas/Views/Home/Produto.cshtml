@@ -1,6 +1,82 @@
 ﻿@{
     ViewData["Title"] = "Produto";
 }
-<h1>@ViewData["Title"]</h1>
+<style>
+    .lh-aHidden {
+        text-decoration: none;
+        color: #000;
+    }
 
-<p>Use this page to detail your site's @ViewData["Title"].</p>
+    .lh-aHidden:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .lh-alert {
+        position: absolute;
+        z-index: 1;
+    }
+</style>
+
+<div class="alert alert-success alert-dismissible offset-lg-7 offset-md-6 offset-sm-1 offset-1 col-lg-4 col-md-5 col-sm-10 col-10 d-inline-flex justify-content-between align-items-center fade" role="alert">
+    Adicionado com Sucesso!
+    <button type="button" class="fal fa-close lh-close" data-dismiss="alert" aria-label="Close" aria-hidden="true"></button>
+</div>
+
+<div class="d-flex row">
+    <div class="col-lg-3 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-1">
+        <div class="accordion">
+            <div class="card">
+                <a class="lh-aHidden" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="test-block">
+                    <div class="card-header">Pesquisa de Catálogo</div>
+                </a>
+                <div id="collapseOne" class="collapse show">
+                    <div class="card-body">
+                        @using (Html.BeginForm()) {
+                            <form action="/" method="post">
+                                <div class="form-group col-lg-12">
+                                    @Html.TextBox("nome", null, new { @class = "form-control", @placeholder = "Nome do Produto" })
+                                </div>
+                                <div class="form-group col-lg-3">
+                                    @Html.TextBox("email", null, new { @class = "form-control", @placeholder = "Mennor Preço" })
+                                </div>
+                                <div class="form-group col-lg-3">
+                                    @Html.TextBox("cpf", null, new { @class = "form-control", @placeholder = "Maior preço" })
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="submit" name="submit" class="btn-lg btn btn-outline-success" value="Filtrar" />
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-10 col-sm-10 col-10 offset-lg-0 offset-md-1 offset-sm-1 offset-1">
+        <div class="container">
+            @for (var i = 0; i < 3; i++) {
+            <div class="row d-flex justify-content-around">
+                @for (var j = 0; j < 3; j++) {
+                @* Parte 1 *@
+                <div class="card col-lg-3 col-md-4 col-sm-4 col-10" style="width: 18rem;">
+                    <img class="card-img-top" width="50px" src="~/img/logo.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Item Produto</h5>
+                        <a href="#" class="btn btn-outline-success">+ Adicionar na cesta</a>
+                    </div>
+                </div>
+                }
+            </div>
+            <br /><br />
+            }
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('.collapse').collapse();
+
+    $('.lh-alert').addClass('d-none');
+</script>
