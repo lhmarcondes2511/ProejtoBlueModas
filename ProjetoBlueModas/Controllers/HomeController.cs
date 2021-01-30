@@ -29,6 +29,18 @@ namespace ProjetoBlueModas.Controllers {
         public IActionResult Sobre() {
             return View();
         }
+
+        public IActionResult LoginConvidado() {
+            return View();
+        }
+
+        public IActionResult LoginUser() {
+            return View();
+        }
+
+        public IActionResult Cesta() {
+            return View();
+        }
         /* 
             Fim Páginas
         */

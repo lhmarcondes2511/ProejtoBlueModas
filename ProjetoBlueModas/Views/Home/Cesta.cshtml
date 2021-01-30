@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Cesta";
+}
+
+<style>
+    @* Imports *@ 
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-hr {
+        width: 80%;
+    }
+
+    .lh-finalCompra {
+        margin-top: 20px;
+    }
+
+    .lh-qtd {
+        color: cornflowerblue;
+    }
+
+    .lh-qtd:hover {
+        text-decoration: none;
+        color: cornflowerblue;
+    }
+</style>
+
+<div class="container">
+    <div class="lh-title text-center">
+        <h2>Carrinho de Compras</h2>
+    </div>
+    <hr class="lh-hr" />
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço Unitário</th>
+                    <th class="text-right">Total Produto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1000</td>
+                    <td>Chapéu</td>
+                    <td>
+                        <a href="#" class="lh-qtd"><i class="fal fa-minus-circle"></i></a>
+                        2
+                        <a href="#" class="lh-qtd"><i class="fal fa-plus-circle"></i></a>
+                        &nbsp;
+                        <a href="#" class="text-danger"><i class="fal fa-trash-alt"></i></a>
+                    </td>
+                    <td>45,00</td>
+                    <td class="text-right">90,00</td>
+                </tr>
+                <tr>
+                    <td>1001</td>
+                    <td>Mochila</td>
+                    <td>
+                        <a href="#" class="lh-qtd"><i class="fal fa-minus-circle"></i></a>
+                        1
+                        <a href="#" class="lh-qtd"><i class="fal fa-plus-circle"></i></a>
+                        &nbsp;
+                        <a href="#" class="text-danger"><i class="fal fa-trash-alt"></i></a>
+                    </td>
+                    <td>75,00</td>
+                    <td class="text-right">75,00</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>Jaqueta</td>
+                    <td>
+                        <a href="#" class="lh-qtd"><i class="fal fa-minus-circle"></i></a>
+                        3
+                        <a href="#" class="lh-qtd"><i class="fal fa-plus-circle"></i></a>
+                        &nbsp;
+                        <a href="#" class="text-danger"><i class="fal fa-trash-alt"></i></a>
+                    </td>
+                    <td>50,00</td>
+                    <td class="text-right">150,00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="offset-lg-10 col-lg-2">
+            <h5 class="text-dark lh-precoTotal">
+                <b>
+                    Total R$ <i>315,00</i>
+                </b>
+            </h5>
+        </div>
+    </div>
+    <div class="row lh-finalCompra">
+        <div class="offset-lg-10">
+            <button class="btn btn-lg btn-success col-lg-12">
+                <h6>FINALIZAR COMPRA</h6>
+            </button>
+        </div>
+    </div>
+</div>
