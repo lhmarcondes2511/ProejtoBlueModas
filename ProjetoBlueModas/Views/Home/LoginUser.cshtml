@@ -9,6 +9,11 @@
         font-family: 'Quicksand', sans-serif;
         margin: 20px 0px;
     }
+
+    .lh-access {
+        margin-top: 20px;
+        font-size: 12pt;
+    }
 </style>
 
 <div class="container">
@@ -23,18 +28,16 @@
                         @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "E-mail" })
                     </div>
                     <div class="form-group col-lg-12">
-                        @Html.TextBox("password", null, new { @class = "form-control", @placeholder = "Senha" })
+                        @Html.Password("Password", null, new { @class = "form-control", @placeholder = "Senha" })
                     </div>
                     <div class="offset-lg-8 col-lg-4">
-                        <button type="submit" class="btn btn-outline-primary">
-                            <h6>Log In</h6>
-                        </button>
+                        <button type="submit" class="btn btn-outline-primary">Log In</button>
                     </div>
                 </form>
             }
         </div>
-        <div class="text-danger text-center">
-            <b>bluemodas@gmail.com | bluemodas123</b>
+        <div class="lh-access text-danger text-center col-lg-12">
+            bluemodas@gmail.com | bluemodas123
         </div>
     </div>
 </div>
