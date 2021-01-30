@@ -47,7 +47,7 @@ namespace ProjetoBlueModas {
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=LoginConvidado}/{id?}");
+                    pattern: "{controller=Home}/{action=LoginUser}/{id?}");
             });
         }
     }
