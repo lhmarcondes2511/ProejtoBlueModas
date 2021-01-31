@@ -1,6 +1,135 @@
 ﻿@{
     ViewData["Title"] = "Sobre";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's @ViewData["Title"].</p>
+<style>
+    @* Imports *@ @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .lh-bg1 {
+        height: 400px;
+        margin-top: -15px;
+        background-color: #0094ff;
+        margin-bottom: 30px;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    }
+
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-interno {
+        padding-top: 50px;
+    }
+    
+    .lh-interno2 {
+        padding-top: 100px;
+    }
+
+    .lh-hr {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .lh-bg2 > .row > .col-lg-7 {
+        margin: 30px 0px;
+    }
+
+    .lh-titleText {
+        font-weight: bold;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-bg2 > p {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-bg2 p:first-letter {
+        margin-left: 40px;
+    }
+
+    .lh-bg3 {
+        height: 500px;
+        margin-bottom: -16px;
+        background-color: #0094ff;
+        clip-path: polygon(0% 20%, 100% 0, 100% 100%, 0% 100%);
+    }
+</style>
+
+<div >
+    <div class="lh-bg1 text-white">
+        <div class="row lh-interno">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="lh-title text-center">
+                    <h2><i class="fab fa-shopify fa-5x"></i></h2>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-8 col-sm-8 col-8 offset-lg-0 offset-md-2 offset-sm-2 offset-2 d-flex justify-content-center align-items-center text-center">
+                <p>
+                    <b>Blue Modas</b> uma loja feita para os seus maiores desejos em roupas e modas. Confira todas as peças para o maior proveito. Muito obrigado pela a preferência.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="lh-bg2 container">
+        <div class="lh-title text-center">
+            <h3>Sobre Nós</h3>
+        </div>
+        <hr class="lh-hr" />
+
+        @*  Section 1*@
+        <div class="row">
+            <div class="col-4 d-flex align-items-center justify-content-center">
+                <div class="lh-image">
+                    <img class="" src="~/img/logo.jpg" width="200px" />
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="lh-titleText">
+                    <h5>
+                        Mais Rápida e Fácil
+                    </h5>
+                </div>
+                <p class="text-justify">
+                    Lorem ipsum fermentum lacinia mattis senectus luctus etiam rutrum, class phasellus etiam habitasse eu per ad donec, porta sociosqu tristique malesuada ut malesuada ut. himenaeos sit curabitur primis libero quis orci molestie litora nostra nulla ut conubia mi mollis, vulputate quisque feugiat felis duis sollicitudin taciti ad blandit at nibh dolor fringilla. eu felis convallis luctus rutrum a porttitor rutrum sagittis, sodales urna sem aptent dolor aenean nam est habitasse, suspendisse quis cubilia taciti phasellus viverra orci. faucibus lectus vestibulum amet neque ante laoreet urna, lacus diam metus praesent felis tortor euismod aenean, pharetra semper pulvinar class volutpat ligula.
+                </p>
+            </div>
+        </div>
+
+        @* Section 2 *@
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="lh-titleText">
+                    <h5>
+                        Mais Rápida e Fácil
+                    </h5>
+                </div>
+                <p class="text-justify">
+                    Lorem ipsum fermentum lacinia mattis senectus luctus etiam rutrum, class phasellus etiam habitasse eu per ad donec, porta sociosqu tristique malesuada ut malesuada ut. himenaeos sit curabitur primis libero quis orci molestie litora nostra nulla ut conubia mi mollis, vulputate quisque feugiat felis duis sollicitudin taciti ad blandit at nibh dolor fringilla. eu felis convallis luctus rutrum a porttitor rutrum sagittis, sodales urna sem aptent dolor aenean nam est habitasse, suspendisse quis cubilia taciti phasellus viverra orci. faucibus lectus vestibulum amet neque ante laoreet urna, lacus diam metus praesent felis tortor euismod aenean, pharetra semper pulvinar class volutpat ligula.
+                </p>
+            </div>
+            <div class=" col-4 d-flex align-items-center justify-content-center">
+                <div class="lh-image">
+                    <img src="~/img/logo.jpg" width="200px" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lh-bg3 text-white">
+        <div class="row lh-interno2">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="lh-title text-center">
+                    <h2><i class="fab fa-shopify fa-5x"></i></h2>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-8 col-sm-8 col-8 offset-lg-0 offset-md-2 offset-sm-2 offset-2 d-flex justify-content-center align-items-center text-center">
+                <p>
+                    <b>Blue Modas</b> uma loja feita para os seus maiores desejos em roupas e modas. Confira todas as peças para o maior proveito. Muito obrigado pela a preferência.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

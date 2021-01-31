@@ -75,60 +75,9 @@ body {
     background-color: #34495e;
     height: auto;
     width: 100%;
-    padding: 20px;
 }
 
 .lh-copyRight {
     display: block;
     background-color: #1a242f;
-    padding: 20px 0px;
-}
-
-.lh-footerTitleTxt {
-    color: #fff;
-    font-size: 18pt;
-    font-family: Tahoma;
-    padding-top: 10px;
-}
-
-.lh-hr {
-    border-bottom: 0.05px solid #fff;
-    width: 80%;
-}
-
-.lh-footerContent1, .lh-footerContent2 {
-    color: #ffff;
-    font-family: Tahoma;
-}
-
-.lh-footerBtn {
-    background-color: midnightblue;
-    color: #fff;
-    margin-right: 20px;
-}
-
-.lh-ulFooter a, .lh-footerContent21 a {
-    color: dodgerblue;
-}
-
-    .lh-ulFooter a:hover, .lh-footerContent21 a:hover, .lh-footerBtn:hover {
-        color: darkcyan;
-        text-decoration: none;
-    }
-
-.lh-titleRedeSocial {
-    margin: 10px 0px;
-}
-
-    .lh-titleRedeSocial p {
-        font-family: 'Quicksand', sans-serif;
-    }
-
-.lh-curriculumA {
-    vertical-align: text-bottom;
-}
-
-.lh-ulFooter li {
-    list-style: none;
-    margin: 2.5px 0px;
 }
