@@ -8,81 +8,81 @@ using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Controllers {
-    public class ClientesController : Controller {
+    public class CategoriasController : Controller {
         private readonly BlueModasContext _context;
 
-        public ClientesController(BlueModasContext context) {
+        public CategoriasController(BlueModasContext context) {
             _context = context;
         }
 
-        // GET: Clientes
-        public IActionResult Index() {
-            return View();
+        // GET: Categorias
+        public async Task<IActionResult> Index() {
+            return View(await _context.Categoria.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
+        // GET: Categorias/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes
+            var categoria = await _context.Categoria
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cliente == null) {
+            if (categoria == null) {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Clientes/Create
+        // GET: Categorias/Create
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: Categorias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone")] Cliente cliente) {
+        public async Task<IActionResult> Create([Bind("Id,Nome")] Categoria categoria) {
             if (ModelState.IsValid) {
-                _context.Add(cliente);
+                _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null) {
+            var categoria = await _context.Categoria.FindAsync(id);
+            if (categoria == null) {
                 return NotFound();
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: Categorias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Telefone")] Cliente cliente) {
-            if (id != cliente.Id) {
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Categoria categoria) {
+            if (id != categoria.Id) {
                 return NotFound();
             }
 
             if (ModelState.IsValid) {
                 try {
-                    _context.Update(cliente);
+                    _context.Update(categoria);
                     await _context.SaveChangesAsync();
                 } catch (DbUpdateConcurrencyException) {
-                    if (!ClienteExists(cliente.Id)) {
+                    if (!CategoriaExists(categoria.Id)) {
                         return NotFound();
                     } else {
                         throw;
@@ -90,36 +90,36 @@ namespace ProjetoBlueModas.Controllers {
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: Categorias/Delete/5
         public async Task<IActionResult> Delete(int? id) {
             if (id == null) {
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes
+            var categoria = await _context.Categoria
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (cliente == null) {
+            if (categoria == null) {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(categoria);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
-            var cliente = await _context.Clientes.FindAsync(id);
-            _context.Clientes.Remove(cliente);
+            var categoria = await _context.Categoria.FindAsync(id);
+            _context.Categoria.Remove(categoria);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClienteExists(int id) {
-            return _context.Clientes.Any(e => e.Id == id);
+        private bool CategoriaExists(int id) {
+            return _context.Categoria.Any(e => e.Id == id);
         }
     }
 }
