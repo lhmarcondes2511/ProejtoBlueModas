@@ -8,5 +8,9 @@ namespace ProjetoBlueModas.Models {
     public class BlueModasContext : DbContext {
         public BlueModasContext(DbContextOptions<BlueModasContext> options) : base(options) {}
 
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+
     }
 }

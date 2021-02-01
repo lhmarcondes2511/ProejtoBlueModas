@@ -30,14 +30,6 @@ namespace ProjetoBlueModas.Controllers {
             return View();
         }
 
-        public IActionResult LoginConvidado() {
-            return View();
-        }
-
-        public IActionResult LoginUser() {
-            return View();
-        }
-
         public IActionResult Cesta() {
             return View();
         }

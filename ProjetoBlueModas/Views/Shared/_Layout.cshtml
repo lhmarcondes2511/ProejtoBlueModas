@@ -24,36 +24,52 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" id="HomeIndex" asp-area="" asp-controller="Home" asp-action="Index">
+                        <li class="nav-item" id="home">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fal fa-home"></i> Home
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" id="LanguagesIndex" asp-area="" asp-controller="Home" asp-action="Produto">
+                        <li class="nav-item" id="produto">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Produto">
                                 <i class="fal fa-shop"></i> Produtos
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" id="LanguagesIndex" asp-area="" asp-controller="Home" asp-action="Sobre">
+                        <li class="nav-item" id="sobre">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">
                                 <i class="fal fa-tags"></i> Sobre
+                            </a>
+                        </li>
+                        <li class="nav-item" id="dashboard">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Dashboard">
+                                <i class="fal fa-tags"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item" id="produtoAdmin">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Produtos">
+                                <i class="fal fa-tags"></i> Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item" id="historico">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Historico">
+                                <i class="fal fa-tags"></i> Histórico de Compras
                             </a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" id="LoginIndex" asp-area="" asp-controller="Home" asp-action="Cesta">
+                        <li class="nav-item" id="Cesta">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cesta">
                                 <i class="fal fa-cart-plus"></i> Meu carrinho
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item" id="Login">
+                            <a class="nav-link text-dark" asp-controller="Admins" asp-action="Index">
                                 <i class="fal fa-user"></i> Login
                             </a>
-                            <div class="dropdown-menu navbar-light bg-white" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="LoginConvidado">Convidado</a>
-                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="LoginUser">Usuário</a>
-                            </div>
+                        </li>
+                        <li class="nav-item" id="Sair">
+                            <a class="nav-link text-dark" asp-controller="Admins" asp-action="Logout">
+                                <i class="fal fa-user"></i> Sair
+                            </a>
                         </li>
                     </ul>
                 </div>
