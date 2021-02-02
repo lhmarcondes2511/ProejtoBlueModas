@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ProjetoBlueModas.Models.Cesta>
+
+@{ 
+    decimal totalGeral = 0;
+}
+
+<style>
+    @* Imports *@ 
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+    #Dashboard, #ProdutoAdmin, #Categoria, #Historico, #Sair {
+        display: none;
+    }
+
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-hr {
+        width: 80%;
+    }
+
+    .lh-finalCompra {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="lh-title text-center">
+        <h2>Carrinho de Compras</h2>
+    </div>
+    <hr class="lh-hr" />
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Produto.Codigo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Produto.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Produto.Quantidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Produto.Preco)
+                    </th>
+                    <th class="text-right">
+                        Preço Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    var total = item.Produto.Quantidade * item.Produto.Preco;
+                    totalGeral += total;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Nome)
+                    </td>
+                    <td>
+                        <a class="lh-qtd" asp-controller="Cestas" asp-action="Decrementar"  asp-route-id="@item.Produto.Id"><i class="fal fa-minus-circle"></i></a>
+                        @Html.DisplayFor(modelItem => item.Produto.Quantidade)
+                        <a class="lh-qtd" asp-controller="Cestas" asp-action="Incrementar"  asp-route-id="@item.Produto.Id"><i class="fal fa-plus-circle"></i></a>
+                        &nbsp;
+                        <a class="text-danger" asp-action="DeletarProduto" asp-route-id="@item.Id"><i class="fal fa-trash-alt"></i></a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Preco)
+                    </td>
+                    <td class="text-right">
+                        @Html.DisplayFor(modelItem => total)
+                    </td>
+                </tr>
+                }
+                <tr>
+                    <td colspan="4"></td>
+                    <td class="text-dark lh-precoTotal text-right">
+                        <b>
+                            Total R$ <i class="lh-valorTotal">@Html.DisplayFor(x => totalGeral)</i>
+                        </b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row lh-finalCompra">
+        <div class="offset-lg-10">
+            <a class="btn btn-lg btn-success col-lg-12" asp-controller="Clientes" asp-action="Index">
+                <h6>FINALIZAR COMPRA</h6>
+            </a>
+        </div>
+    </div>
+</div>

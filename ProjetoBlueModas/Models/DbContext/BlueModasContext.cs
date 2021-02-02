@@ -13,6 +13,8 @@ namespace ProjetoBlueModas.Models {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Cesta> Cesta { get; set; }
+        public DbSet<Historico> Historico { get; set; }
 
     }
 }

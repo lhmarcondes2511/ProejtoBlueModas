@@ -51,7 +51,7 @@ namespace ProjetoBlueModas.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Img,Codigo,Nome,Quantidade,Preco,CategoriaId")] Produto produto) {
+        public async Task<IActionResult> Create([Bind("Id,Img,Codigo,Nome,QuantidadeMaxima,Preco,CategoriaId")] Produto produto) {
             if (ModelState.IsValid) {
 
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
@@ -88,7 +88,7 @@ namespace ProjetoBlueModas.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Imagem,Codigo,Nome,Quantidade,Preco,CategoriaId")] Produto produto) {
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Imagem,Codigo,Nome,QuantidadeMaxima,Preco,CategoriaId")] Produto produto) {
             if (id != produto.Id) {
                 return NotFound();
             }

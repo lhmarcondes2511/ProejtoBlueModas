@@ -175,7 +175,6 @@ C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Clientes\Edit.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Admins\Dashboard.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Admins\Historico.cshtml.g.cs
-C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Admins\Produtos.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Produtos\Create.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Produtos\Delete.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Produtos\Details.cshtml.g.cs
@@ -186,3 +185,14 @@ C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Categorias\Details.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Categorias\Edit.cshtml.g.cs
 C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Categorias\Index.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Home\PedidoRealizado.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Cestas\Create.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Cestas\Delete.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Cestas\Details.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Cestas\Edit.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Cestas\Index.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Historicoes\Create.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Historicoes\Delete.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Historicoes\Details.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Historicoes\Edit.cshtml.g.cs
+C:\Users\lksmarcondes_2\source\repos\ProjetoBlueModas\ProjetoBlueModas\obj\Debug\net5.0\Razor\Views\Historicoes\Index.cshtml.g.cs

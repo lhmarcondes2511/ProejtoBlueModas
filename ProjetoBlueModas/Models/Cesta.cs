@@ -8,15 +8,7 @@ namespace ProjetoBlueModas.Models {
     public class Cesta {
         [Key]
         public int Id { get; set; }
-        public Cliente Cliente { get; set; }
         public Produto Produto { get; set; }
-
-        public Cesta() { }
-
-        public Cesta(int id, Cliente cliente, Produto produto) {
-            Id = id;
-            Cliente = cliente;
-            Produto = produto;
-        }
+        public List<Produto> Produtos { get; set; }
     }
 }

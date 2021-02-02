@@ -121,5 +121,7 @@ namespace ProjetoBlueModas.Controllers {
         private bool ClienteExists(int id) {
             return _context.Clientes.Any(e => e.Id == id);
         }
+
+
     }
 }

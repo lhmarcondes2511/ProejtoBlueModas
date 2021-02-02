@@ -3,6 +3,10 @@
 <style>
     @* Imports *@ @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
+    #Dashboard, #ProdutoAdmin, #Categoria, #Historico, #Sair {
+        display: none;
+    }
+
     .lh-title {
         font-family: 'Quicksand', sans-serif;
         margin: 20px 0px;
@@ -17,7 +21,7 @@
 <div class="container">
     <div class="row d-flex align-content-center justify-content-center">
         <div class="lh-title text-center col-lg-12">
-            <h2><i class="fal fa-user"></i> Administrador</h2>
+            <h2><i class="fal fa-user"></i> Convidado</h2>
         </div>
         <div class="col-lg-4">
             <form asp-action="Create">
@@ -35,7 +39,7 @@
                     <span asp-validation-for="Telefone" class="text-danger"></span>
                 </div>
                 <div class="offset-lg-8 col-lg-4">
-                    <input type="submit" value="Entrar" class="btn btn-outline-primary" />
+                    <input type="submit" value="Entrar" asp-controller="Home" asp-action="PedidoRealizado" class="btn btn-outline-primary" />
                 </div>
             </form>
         </div>

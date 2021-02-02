@@ -24,32 +24,37 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" id="home">
+                        <li class="nav-item" id="Home">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fal fa-home"></i> Home
                             </a>
                         </li>
-                        <li class="nav-item" id="produto">
+                        <li class="nav-item" id="Produto">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Produto">
                                 <i class="fal fa-shop"></i> Produtos
                             </a>
                         </li>
-                        <li class="nav-item" id="sobre">
+                        <li class="nav-item" id="Sobre">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Sobre">
                                 <i class="fal fa-tags"></i> Sobre
                             </a>
                         </li>
-                        <li class="nav-item" id="dashboard">
+                        <li class="nav-item" id="Dashboard">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Dashboard">
                                 <i class="fal fa-tags"></i> Dashboard
                             </a>
                         </li>
-                        <li class="nav-item" id="produtoAdmin">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Produtos">
+                        <li class="nav-item" id="ProdutoAdmin">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">
                                 <i class="fal fa-tags"></i> Produtos
                             </a>
                         </li>
-                        <li class="nav-item" id="historico">
+                        <li class="nav-item" id="Categoria">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">
+                                <i class="fal fa-tags"></i> Categoria
+                            </a>
+                        </li>
+                        <li class="nav-item" id="Historico">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Historico">
                                 <i class="fal fa-tags"></i> Histórico de Compras
                             </a>
@@ -57,7 +62,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item" id="Cesta">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cesta">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cestas" asp-action="Index">
                                 <i class="fal fa-cart-plus"></i> Meu carrinho
                             </a>
                         </li>

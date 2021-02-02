@@ -20,7 +20,7 @@ namespace ProjetoBlueModas.Models {
         public IFormFile Img { get; set; }
 
         [Required(ErrorMessage = "O código do produto é obrigatório", AllowEmptyStrings = false)]
-        [Display(Name = "Código do Produto")]
+        [Display(Name = "Código")]
         public int Codigo { get; set; }
         
         [Required(ErrorMessage = "O nome do produto é obrigatório", AllowEmptyStrings = false)]
@@ -28,11 +28,16 @@ namespace ProjetoBlueModas.Models {
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
-        [Display(Name = "Quantidade do Produto")]
+        [Display(Name = "Quantidade")]
         public int Quantidade { get; set; }
+
+        [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
+        [Display(Name = "Quantidade Disponível")]
+        public int QuantidadeMaxima { get; set; }
 
         [Required(ErrorMessage = "Informe o preço do produto", AllowEmptyStrings = false)]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Preço Unitário")]
         public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "Selecione uma categoria", AllowEmptyStrings = false)]

@@ -1,25 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Produto";
-}
+﻿@model IEnumerable<ProjetoBlueModas.Models.Produto>
+
 <style>
-    .lh-aHidden {
-        text-decoration: none;
-        color: #000;
+    @* Imports *@
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+    #Dashboard, #ProdutoAdmin, #Categoria, #Historico, #Sair {
+        display: none;
     }
 
-    .lh-aHidden:hover {
-        text-decoration: none;
-        color: #000;
+    .lh-cards {
+        margin: 30px 0px;
     }
 
-    .lh-alert {
-        position: absolute;
-        z-index: 1;
+    .lh-card {
+        left: 5px;
+        display: inline-block;
+        vertical-align: top;
+        box-shadow: 0px 0px 15px #777;
+        margin: 20px 20px;
+        height: 300px;
+        width: 260px;
+        padding: 5px;
+        font-family: Verdana, sans-serif;
     }
 
-    .lh-aBtn{
-        font-size: 8pt;
-        font-family: Tahoma;
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-card img {
+        width: auto;
+        max-height: 50%;
+    }
+
+    .lh-categoria, .lh-preco {
+        font-size: 10pt;
+    }
+
+    .lh-preco {
+        color: darkgreen;
+    }
+
+    .lh-hr {
+        width: 80%;
+        margin-bottom: 20px;
     }
 </style>
 
@@ -28,52 +52,28 @@
     <button type="button" class="fal fa-close lh-close" data-dismiss="alert" aria-label="Close" aria-hidden="true"></button>
 </div>
 
-<div class="d-flex row">
-    <div class="col-lg-3 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-1 offset-1">
-        <div class="accordion">
-            <div class="card">
-                <a class="lh-aHidden" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="test-block">
-                    <div class="card-header">Pesquisa de Catálogo</div>
-                </a>
-                <div id="collapseOne" class="collapse show">
+<div class="lh-title text-center">
+    <h3>Produtos</h3>
+</div>
+<hr class="lh-hr" />
+<div class="row">
+    <div class="col-12"></div>
+    <div class="col-12">
+        <div class="lh-cards container">
+            @foreach (var item in Model) {
+                <div class="lh-card card text-center">
+                    <img class="card-img-top" src="~/image/@item.Imagem" asp-append-version="true" />
                     <div class="card-body">
-                        @using (Html.BeginForm()) {
-                            <form action="/" method="post">
-                                <div class="form-group col-lg-12">
-                                    @Html.TextBox("nome", null, new { @class = "form-control", @placeholder = "Nome do Produto" })
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    @Html.TextBox("email", null, new { @class = "form-control", @placeholder = "Mennor Preço" })
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    @Html.TextBox("cpf", null, new { @class = "form-control", @placeholder = "Maior preço" })
-                                </div>
-                                <div class="col-lg-3">
-                                    <input type="submit" name="submit" class="btn-lg btn btn-outline-success" value="Filtrar" />
-                                </div>
-                            </form>
-                        }
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <h6 class="text-left lh-categoria">
+                            <b>Categoria: </b> @Html.DisplayFor(modelItem => item.CategoriaId)
+                        </h6>
+                        <h6 class="lh-preco text-right">@Html.DisplayFor(modelItem => item.Preco)</h6>
+                        <div class="text-right">
+                            <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Home" asp-action="InserirNaCesta" asp-route-id="@item.Id">+ Adicionar na cesta</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-8 col-md-10 col-sm-10 col-10 offset-lg-0 offset-md-1 offset-sm-1 offset-1">
-        <div class="container">
-            @for (var i = 0; i < 3; i++) {
-            <div class="row d-flex justify-content-around">
-                @for (var j = 0; j < 3; j++) {
-                @* Parte 1 *@
-                <div class="card col-lg-3 col-md-3 col-sm-5 col-10" style="width: 18rem;">
-                    <img class="card-img-top" width="50px" src="~/img/logo.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Item Produto</h5>
-                        <a href="#" class="btn btn-sm btn-outline-success lh-aBtn">+ Adicionar ao carrinho</a>
-                    </div>
-                </div>
-                }
-            </div>
-            <br /><br />
             }
         </div>
     </div>
