@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Migrations
 {
     [DbContext(typeof(BlueModasContext))]
-    partial class BlueModasContextModelSnapshot : ModelSnapshot
+    [Migration("20210202214700_Organizando-Compras2")]
+    partial class OrganizandoCompras2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

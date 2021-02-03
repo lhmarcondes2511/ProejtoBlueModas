@@ -41,7 +41,7 @@
                         @Html.DisplayNameFor(model => model.Produto.Nome)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Produto.Quantidade)
+                        @Html.DisplayNameFor(model => model.Quantidade)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Produto.Preco)
@@ -53,29 +53,29 @@
             </thead>
             <tbody>
                 @foreach (var item in Model) {
-                    var total = item.Produto.Quantidade * item.Produto.Preco;
+                    var total = item.Quantidade * item.Produto.Preco;
                     totalGeral += total;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Produto.Codigo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Produto.Nome)
-                    </td>
-                    <td>
-                        <a class="lh-qtd" asp-controller="Cestas" asp-action="Decrementar"  asp-route-id="@item.Produto.Id"><i class="fal fa-minus-circle"></i></a>
-                        @Html.DisplayFor(modelItem => item.Produto.Quantidade)
-                        <a class="lh-qtd" asp-controller="Cestas" asp-action="Incrementar"  asp-route-id="@item.Produto.Id"><i class="fal fa-plus-circle"></i></a>
-                        &nbsp;
-                        <a class="text-danger" asp-action="DeletarProduto" asp-route-id="@item.Id"><i class="fal fa-trash-alt"></i></a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Produto.Preco)
-                    </td>
-                    <td class="text-right">
-                        @Html.DisplayFor(modelItem => total)
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produto.Codigo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produto.Nome)
+                        </td>
+                        <td>
+                            <a class="lh-qtd" asp-controller="Cestas" asp-action="Decrementar" asp-route-id="@item.Produto.Id"><i class="fal fa-minus-circle"></i></a>
+                            @Html.DisplayFor(modelItem => item.Quantidade)
+                            <a class="lh-qtd" asp-controller="Cestas" asp-action="Incrementar" asp-route-id="@item.Produto.Id"><i class="fal fa-plus-circle"></i></a>
+                            &nbsp;
+                            <a class="text-danger" asp-action="DeletarProduto" asp-route-id="@item.Id"><i class="fal fa-trash-alt"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produto.Preco)
+                        </td>
+                        <td class="text-right">
+                            @Html.DisplayFor(modelItem => total)
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td colspan="4"></td>
@@ -88,11 +88,11 @@
             </tbody>
         </table>
     </div>
-    <div class="row lh-finalCompra">
-        <div class="offset-lg-10">
-            <a class="btn btn-lg btn-success col-lg-12" asp-controller="Clientes" asp-action="Index">
-                <h6>FINALIZAR COMPRA</h6>
-            </a>
+        <div class="row lh-finalCompra">
+            <div class="offset-lg-10">
+                <a class="btn btn-lg btn-success col-lg-12" asp-controller="Historicoes" asp-action="InserirCesta">
+                    <h6>FINALIZAR COMPRA</h6>
+                </a>
+            </div>
         </div>
     </div>
-</div>

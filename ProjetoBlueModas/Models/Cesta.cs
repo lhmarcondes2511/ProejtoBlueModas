@@ -8,7 +8,15 @@ namespace ProjetoBlueModas.Models {
     public class Cesta {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
+        [Display(Name = "Quantidade")]
+        public int Quantidade { get; set; }
+        public long Protocolo { get; set; }
+        public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
-        public List<Produto> Produtos { get; set; }
+
+        public Cesta () {
+
+        }
     }
 }

@@ -28,10 +28,6 @@ namespace ProjetoBlueModas.Models {
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
-        [Display(Name = "Quantidade")]
-        public int Quantidade { get; set; }
-
-        [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
         [Display(Name = "Quantidade Disponível")]
         public int QuantidadeMaxima { get; set; }
 
@@ -47,12 +43,12 @@ namespace ProjetoBlueModas.Models {
 
         public Produto() { }
 
-        public Produto(int id, string imagem, int codigo, string nome, int quantidade, decimal preco, int categoriaId, Categoria categoria) {
+        public Produto(int id, string imagem, int codigo, string nome, int quantidadeMaxima, decimal preco, int categoriaId, Categoria categoria) {
             Id = id;
             Imagem = imagem;
             Codigo = codigo;
             Nome = nome;
-            Quantidade = quantidade;
+            QuantidadeMaxima = quantidadeMaxima;
             Preco = preco;
             CategoriaId = categoriaId;
             Categoria = categoria;

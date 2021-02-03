@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 
@@ -49,10 +50,33 @@ namespace ProjetoBlueModas.Controllers {
             if (ModelState.IsValid) {
                 _context.Add(historico);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToRoute(new { controller = "Clientes", action = "Index" });
             }
             return View(historico);
         }
+
+        public async Task<IActionResult> InserirCesta () {
+            var cesta = await _context.Cesta.ToListAsync();
+            if(cesta == null) {
+                return NotFound();
+            }
+
+            InserirCestaNoHistorico();
+
+            return RedirectToRoute(new { controller = "Clientes", action = "Index" });
+        }
+        public void InserirCestaNoHistorico() {
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connection)) {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("", conn)) {
+                    command.CommandText = "insert into Historico ( CestaId, Protocolo, CodigoProduto, ImagemProduto, NomeProduto, PrecoProduto, NomeCategoria, QuantidadeCesta) SELECT C.Id, C.Protocolo, P.Codigo, P.Imagem, P.Nome, P.Preco, CA.Nome, C.Quantidade FROM Cesta C INNER JOIN Produtos P ON C.ProdutoId = P.Id INNER JOIN Categoria CA ON CA.Id = P.CategoriaId";
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+            }
+        }
+
 
         // GET: Historicoes/Edit/5
         public async Task<IActionResult> Edit(int? id) {

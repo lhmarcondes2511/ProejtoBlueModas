@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 
@@ -45,13 +46,31 @@ namespace ProjetoBlueModas.Controllers {
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone")] Cliente cliente) {
+        public async Task<IActionResult> Create([Bind("Nome,Email,Telefone")] Cliente cliente) {
             if (ModelState.IsValid) {
+                var cesta = await _context.Cesta.FirstOrDefaultAsync();
+                if(cesta == null) {
+                    return NotFound();
+                }
+
+                cliente.Protocolo = cesta.Protocolo;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                InserirClienteNoHistorico();
             }
-            return View(cliente);
+            return RedirectToRoute(new { controller = "Home", action = "PedidoRealizado" });
+        }
+
+        public void InserirClienteNoHistorico() {
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connection)) {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("", conn)) {
+                    command.CommandText = "UPDATE Historico SET ClienteId = C.Id, Data = CURRENT_TIMESTAMP, NomeCliente = Nome, EmailCliente = C.Email, TelefoneCliente = C.Telefone FROM Historico H INNER JOIN Clientes C ON H.Protocolo = C.Protocolo;";
+                    command.ExecuteNonQuery();
+                    command.Dispose();
+                }
+            }
         }
 
         // GET: Clientes/Edit/5
@@ -99,8 +118,7 @@ namespace ProjetoBlueModas.Controllers {
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null) {
                 return NotFound();
             }

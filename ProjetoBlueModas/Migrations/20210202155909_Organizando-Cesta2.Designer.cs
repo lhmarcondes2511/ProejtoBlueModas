@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Migrations
 {
     [DbContext(typeof(BlueModasContext))]
-    partial class BlueModasContextModelSnapshot : ModelSnapshot
+    [Migration("20210202155909_Organizando-Cesta2")]
+    partial class OrganizandoCesta2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,8 +72,8 @@ namespace ProjetoBlueModas.Migrations
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Protocolo")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
@@ -99,8 +101,8 @@ namespace ProjetoBlueModas.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Protocolo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
@@ -124,38 +126,11 @@ namespace ProjetoBlueModas.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CodigoProduto")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EmailCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagemProduto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeCategoria")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeProduto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PrecoProduto")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("QuantidadeCesta")
+                    b.Property<int>("Protocolo")
                         .HasColumnType("int");
-
-                    b.Property<string>("TelefoneCliente")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

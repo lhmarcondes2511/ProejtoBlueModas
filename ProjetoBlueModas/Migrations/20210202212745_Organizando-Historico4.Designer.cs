@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Migrations
 {
     [DbContext(typeof(BlueModasContext))]
-    partial class BlueModasContextModelSnapshot : ModelSnapshot
+    [Migration("20210202212745_Organizando-Historico4")]
+    partial class OrganizandoHistorico4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,8 +156,8 @@ namespace ProjetoBlueModas.Migrations
                     b.Property<int>("QuantidadeCesta")
                         .HasColumnType("int");
 
-                    b.Property<string>("TelefoneCliente")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TelefoneCliente")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

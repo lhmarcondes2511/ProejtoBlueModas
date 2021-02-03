@@ -1,7 +1,100 @@
-﻿<style>
+﻿@model IEnumerable<ProjetoBlueModas.Models.Historico>
+
+@{
+    decimal totalGeral = 0;
+}
+
+<style>
+    @* Imports *@ @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
     #Dashboard, #ProdutoAdmin, #Categoria, #Historico, #Sair {
         display: none;
     }
+
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-qtd {
+        font-size: 8pt;
+    }
+
+    .lh-precoTotal {
+        padding-right: 20px
+    }
 </style>
 
-<h1>Pedido Realizado</h1>
+<div class="container">
+    <div class="lh-title text-center">
+        <h5>Seu Comprovante</h5>
+    </div>
+    <hr class="lh-hr" />
+    <div class="row col-12 col-lg-7 mx-lg-auto">
+        <div class="col-12">
+            <table class="">
+                <tr class="row">
+                    @foreach (var item in Model.Select(x => x.Protocolo).Distinct()) {
+                    <tr>                    
+                        <th class="col-6 text-left">Protocolo</th>
+                        <td class="col-6 text-right">@Html.DisplayFor(x => item)</td>
+                    </tr>
+                    }
+                </tr>
+                <tr class="row">
+                    @foreach (var item in Model.Select(x => x.NomeCliente).Distinct()) {
+                    <tr>                    
+                        <th class="col-6 text-left">Nome</th>
+                        <td class="col-6 text-right">@Html.DisplayFor(x => item)</td>
+                    </tr>
+                    }
+                </tr>
+                <tr class="row">
+                    @foreach (var item in Model.Select(x => x.EmailCliente).Distinct()) {
+                    <tr>
+                        <th class="col-6 text-left">Email</th>
+                        <td class="col-6 text-right">@Html.DisplayFor(x => item)</td>
+                    </tr>
+                    }
+                </tr>
+                <tr class="row">
+                    @foreach (var item in Model.Select(x => x.TelefoneCliente).Distinct()) {
+                    <tr>
+                        <th class="col-6 text-left">Telefone</th>
+                        <td class="col-6 text-right">@Html.DisplayFor(x => item)</td>
+                    </tr>
+                    }
+                </tr>
+            </table>
+        </div>
+        <div class="lh-title text-center col-12">
+            <h5>Itens Comprados</h5>
+            <hr class="lh-hr" />
+        </div>
+        <div class="col-12">
+            <table class="">
+                <tr class="row mx-lg-auto">
+                    @foreach (var item in Model) {
+                        var total = item.QuantidadeCesta * item.PrecoProduto;
+                        totalGeral += total;
+                    <tr>
+                        <td class="col-7 text-left">@Html.DisplayFor(modelItem => item.NomeProduto)</td>
+                        <td class="col-1 text-right lh-qtd">@Html.DisplayFor(modelItem => item.QuantidadeCesta)<span>x</span></td>
+                        <td class="col-4 text-right">@Html.DisplayFor(modelItem => item.PrecoProduto)</td>
+                    </tr>
+                    }
+                </tr>
+            </table>
+            <hr class="lh-hr" />
+            <div class="text-dark lh-precoTotal text-right">
+                <b>
+                    Total R$ <i class="lh-valorTotal">@Html.DisplayFor(x => totalGeral)</i>
+                </b>
+            </div>
+            <div class="text-right">
+                <a class="btn btn-lg btn-primary col-lg-12" asp-controller="Home" asp-action="FecharPedidoRealizado">
+                    <h6>Fechar</h6>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

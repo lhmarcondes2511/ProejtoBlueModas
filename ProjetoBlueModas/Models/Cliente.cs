@@ -23,6 +23,8 @@ namespace ProjetoBlueModas.Models {
         [Required(ErrorMessage = "Telefone Obrigatório")]
         public string Telefone { get; set; }
 
+        public long Protocolo { get; set; }
+
         public Cliente() { }
 
         public Cliente(int id, string nome, string email, string telefone) {

@@ -41,16 +41,28 @@ namespace ProjetoBlueModas.Controllers {
 
         /* Páginas */
         public IActionResult Index() {
+            if (User.Identity.IsAuthenticated) {
+                return RedirectToAction("Dashboard");
+            }
             return View();
         }
         public IActionResult Produtos() {
+            if (!User.Identity.IsAuthenticated) {
+                return RedirectToAction("Index");
+            }
             return View();
         }
         public IActionResult Historico() {
+            if (!User.Identity.IsAuthenticated) {
+                return RedirectToAction("Index");
+            }
             return View();
         }
         [Authorize]
         public IActionResult Dashboard() {
+            if (!User.Identity.IsAuthenticated) {
+                return RedirectToAction("Index");
+            }
             return View();
         }
         /* Fim Páginas */

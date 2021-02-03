@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Migrations
 {
     [DbContext(typeof(BlueModasContext))]
-    partial class BlueModasContextModelSnapshot : ModelSnapshot
+    [Migration("20210202141722_Organizando-Cesta")]
+    partial class OrganizandoCesta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,10 +72,7 @@ namespace ProjetoBlueModas.Migrations
                     b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Quantidade")
+                    b.Property<int>("Protocolo")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -99,8 +98,8 @@ namespace ProjetoBlueModas.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Protocolo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
@@ -118,44 +117,14 @@ namespace ProjetoBlueModas.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CestaId")
+                    b.Property<int?>("CestaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CodigoProduto")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("EmailCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagemProduto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeCategoria")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeCliente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeProduto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PrecoProduto")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<long>("Protocolo")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("QuantidadeCesta")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TelefoneCliente")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -189,6 +158,9 @@ namespace ProjetoBlueModas.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuantidadeMaxima")
                         .HasColumnType("int");
 
@@ -214,15 +186,11 @@ namespace ProjetoBlueModas.Migrations
                 {
                     b.HasOne("ProjetoBlueModas.Models.Cesta", "Cesta")
                         .WithMany()
-                        .HasForeignKey("CestaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CestaId");
 
                     b.HasOne("ProjetoBlueModas.Models.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteId");
 
                     b.Navigation("Cesta");
 

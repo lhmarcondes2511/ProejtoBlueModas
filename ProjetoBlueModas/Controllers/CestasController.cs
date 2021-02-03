@@ -124,39 +124,7 @@ namespace ProjetoBlueModas.Controllers {
             return _context.Cesta.Any(e => e.Id == id);
         }
 
-
-        public async Task<IActionResult> Incrementar(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos.FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null) {
-                return NotFound();
-            }
-            mudarElemento(produto.Id, produto, 1);
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Decrementar(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos.FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null) {
-                return NotFound();
-            }
-
-            if(produto.Quantidade > 1) {
-                mudarElemento(produto.Id, produto, 0);
-            } else {
-                mudarElemento(produto.Id, produto, 3);
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
+        
 
         public async Task<IActionResult> DeletarProduto(int? id) {
             if (id == null) {
@@ -174,25 +142,63 @@ namespace ProjetoBlueModas.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
-        public void mudarElemento(int id, Produto produto, int acao) {
+
+        public async Task<IActionResult> Incrementar(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+
+            var cesta = await _context.Cesta.FirstOrDefaultAsync(m => m.ProdutoId == id);
+            if (cesta == null) {
+                return NotFound();
+            }
+            mudarElemento(cesta.Id, cesta, 1);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        public async Task<IActionResult> Decrementar(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+
+            var cesta = await _context.Cesta.FirstOrDefaultAsync(m => m.ProdutoId == id);
+            if (cesta == null) {
+                return NotFound();
+            }
+
+            if (cesta.Quantidade > 1) {
+                mudarElemento(cesta.Id, cesta, 0);
+            } else {
+                mudarElemento(cesta.Id, cesta, 3);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public void mudarElemento(int id, Cesta cesta, int acao) {
             var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
             using (SqlConnection conn = new SqlConnection(connection)) {
                 conn.Open();
                 using (SqlCommand command = new SqlCommand("", conn)) {
-                    if(acao == 0 && produto.Quantidade > 0) {
-                        command.CommandText = "update Produtos set Quantidade = Quantidade - 1 where id = @ProdutoId";
-                        command.Parameters.AddWithValue("@ProdutoId", produto.Id);
+                    if (acao == 0 && cesta.Quantidade > 0) {
+                        command.CommandText = "update Cesta set Quantidade = Quantidade - 1 where id = @CestaId";
+                        command.Parameters.AddWithValue("@CestaId", id);
                         command.ExecuteNonQuery();
                         command.Dispose();
-                    } else if(acao == 1) {
-                        command.CommandText = "update Produtos set Quantidade = Quantidade + 1 where id = @ProdutoId";
-                        command.Parameters.AddWithValue("@ProdutoId", produto.Id);
+                    } else if (acao == 1) {
+                        command.CommandText = "update Cesta set Quantidade = Quantidade + 1 where id = @CestaId";
+                        command.Parameters.AddWithValue("@CestaId", id);
                         command.ExecuteNonQuery();
                         command.Dispose();
                     }
                 }
             }
         }
+
 
         public void RemoverProduto(int id) {
             var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
@@ -206,5 +212,6 @@ namespace ProjetoBlueModas.Controllers {
                 }
             }
         }
+
     }
 }
