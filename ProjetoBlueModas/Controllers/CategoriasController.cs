@@ -16,12 +16,10 @@ namespace ProjetoBlueModas.Controllers {
             _context = context;
         }
 
-        // GET: Categorias
+        /* Páginas */
         public async Task<IActionResult> Index() {
             return View(await _context.Categoria.ToListAsync());
         }
-
-        // GET: Categorias/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
@@ -34,27 +32,9 @@ namespace ProjetoBlueModas.Controllers {
 
             return View(categoria);
         }
-
-        // GET: Categorias/Create
         public IActionResult Create() {
             return View();
         }
-
-        // POST: Categorias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Categoria categoria) {
-            if (ModelState.IsValid) {
-                _context.Add(categoria);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(categoria);
-        }
-
-        // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
                 return NotFound();
@@ -66,10 +46,33 @@ namespace ProjetoBlueModas.Controllers {
             }
             return View(categoria);
         }
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
 
-        // POST: Categorias/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var categoria = await _context.Categoria
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categoria == null) {
+                return NotFound();
+            }
+
+            return View(categoria);
+        }
+        /* Fim Páginas */
+
+        /* Ações */
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Nome")] Categoria categoria) {
+            if (ModelState.IsValid) {
+                _context.Add(categoria);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Categoria categoria) {
@@ -92,23 +95,7 @@ namespace ProjetoBlueModas.Controllers {
             }
             return View(categoria);
         }
-
-        // GET: Categorias/Delete/5
-        public async Task<IActionResult> Delete(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categoria
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null) {
-                return NotFound();
-            }
-
-            return View(categoria);
-        }
-
-        // POST: Categorias/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
@@ -123,7 +110,6 @@ namespace ProjetoBlueModas.Controllers {
                 return RedirectToAction(nameof(Index));
             }
         }
-
         public bool VerificarProduto(int id) {
             var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
             var result = 0;
@@ -141,9 +127,12 @@ namespace ProjetoBlueModas.Controllers {
                 return false;
             }
         }
-
         private bool CategoriaExists(int id) {
             return _context.Categoria.Any(e => e.Id == id);
         }
+        /* Fim Ações */
+
+
+
     }
 }

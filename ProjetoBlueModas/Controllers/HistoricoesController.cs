@@ -16,7 +16,7 @@ namespace ProjetoBlueModas.Controllers {
             _context = context;
         }
 
-        // GET: Historicoes
+        /* Páginas */
         public async Task<IActionResult> Index(string protocolo, string codigo, string nomeCliente, string nomeProduto) {
             var historico = from m in _context.Historico select m;
 
@@ -33,8 +33,6 @@ namespace ProjetoBlueModas.Controllers {
 
             return View(historico);
         }
-
-        // GET: Historicoes/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
@@ -48,15 +46,37 @@ namespace ProjetoBlueModas.Controllers {
 
             return View(historico);
         }
-
-        // GET: Historicoes/Create
         public IActionResult Create() {
             return View();
         }
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
 
-        // POST: Historicoes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var historico = await _context.Historico.FindAsync(id);
+            if (historico == null) {
+                return NotFound();
+            }
+            return View(historico);
+        }
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+
+            var historico = await _context.Historico
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (historico == null) {
+                return NotFound();
+            }
+
+            return View(historico);
+        }
+        /* Fim Páginas */
+
+
+        /* Ações */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id")] Historico historico) {
@@ -68,9 +88,9 @@ namespace ProjetoBlueModas.Controllers {
             return View(historico);
         }
 
-        public async Task<IActionResult> InserirCesta () {
+        public async Task<IActionResult> InserirCesta() {
             var cesta = await _context.Cesta.ToListAsync();
-            if(cesta == null) {
+            if (cesta == null) {
                 return NotFound();
             }
 
@@ -90,23 +110,6 @@ namespace ProjetoBlueModas.Controllers {
             }
         }
 
-
-        // GET: Historicoes/Edit/5
-        public async Task<IActionResult> Edit(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var historico = await _context.Historico.FindAsync(id);
-            if (historico == null) {
-                return NotFound();
-            }
-            return View(historico);
-        }
-
-        // POST: Historicoes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id")] Historico historico) {
@@ -130,22 +133,6 @@ namespace ProjetoBlueModas.Controllers {
             return View(historico);
         }
 
-        // GET: Historicoes/Delete/5
-        public async Task<IActionResult> Delete(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var historico = await _context.Historico
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (historico == null) {
-                return NotFound();
-            }
-
-            return View(historico);
-        }
-
-        // POST: Historicoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
@@ -158,5 +145,9 @@ namespace ProjetoBlueModas.Controllers {
         private bool HistoricoExists(int id) {
             return _context.Historico.Any(e => e.Id == id);
         }
+        /* Fim Ações */
+
+
+
     }
 }

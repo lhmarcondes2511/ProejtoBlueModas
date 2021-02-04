@@ -16,13 +16,11 @@ namespace ProjetoBlueModas.Controllers {
             _context = context;
         }
 
-        // GET: Cestas
+        /* Páginas */
         public async Task<IActionResult> Index() {
             var lista = _context.Cesta.Include(l => l.Produto);
             return View(await lista.ToListAsync());
         }
-
-        // GET: Cestas/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
@@ -36,27 +34,9 @@ namespace ProjetoBlueModas.Controllers {
 
             return View(cesta);
         }
-
-        // GET: Cestas/Create
         public IActionResult Create() {
             return View();
         }
-
-        // POST: Cestas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Cesta cesta) {
-            if (ModelState.IsValid) {
-                _context.Add(cesta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(cesta);
-        }
-
-        // GET: Cestas/Edit/5
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
                 return NotFound();
@@ -68,10 +48,34 @@ namespace ProjetoBlueModas.Controllers {
             }
             return View(cesta);
         }
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
 
-        // POST: Cestas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var cesta = await _context.Cesta
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cesta == null) {
+                return NotFound();
+            }
+
+            return View(cesta);
+        }
+        /* Fim Páginas */
+
+
+        /* Ações */
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id")] Cesta cesta) {
+            if (ModelState.IsValid) {
+                _context.Add(cesta);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cesta);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id")] Cesta cesta) {
@@ -95,22 +99,6 @@ namespace ProjetoBlueModas.Controllers {
             return View(cesta);
         }
 
-        // GET: Cestas/Delete/5
-        public async Task<IActionResult> Delete(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var cesta = await _context.Cesta
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cesta == null) {
-                return NotFound();
-            }
-
-            return View(cesta);
-        }
-
-        // POST: Cestas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
@@ -123,8 +111,6 @@ namespace ProjetoBlueModas.Controllers {
         private bool CestaExists(int id) {
             return _context.Cesta.Any(e => e.Id == id);
         }
-
-        
 
         public async Task<IActionResult> DeletarProduto(int? id) {
             if (id == null) {
@@ -142,7 +128,6 @@ namespace ProjetoBlueModas.Controllers {
             return RedirectToAction(nameof(Index));
         }
 
-
         public async Task<IActionResult> Incrementar(int? id) {
             if (id == null) {
                 return NotFound();
@@ -156,8 +141,6 @@ namespace ProjetoBlueModas.Controllers {
 
             return RedirectToAction(nameof(Index));
         }
-
-
 
         public async Task<IActionResult> Decrementar(int? id) {
             if (id == null) {
@@ -177,7 +160,6 @@ namespace ProjetoBlueModas.Controllers {
 
             return RedirectToAction(nameof(Index));
         }
-
 
         public void mudarElemento(int id, Cesta cesta, int acao) {
             var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
@@ -199,7 +181,6 @@ namespace ProjetoBlueModas.Controllers {
             }
         }
 
-
         public void RemoverProduto(int id) {
             var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
             using (SqlConnection conn = new SqlConnection(connection)) {
@@ -212,6 +193,6 @@ namespace ProjetoBlueModas.Controllers {
                 }
             }
         }
-
+        /* Fim Ações */
     }
 }

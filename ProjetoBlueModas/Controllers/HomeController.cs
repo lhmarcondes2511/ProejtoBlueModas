@@ -20,9 +20,7 @@ namespace ProjetoBlueModas.Controllers {
         }
 
 
-        /* 
-            Páginas
-        */
+        /* Páginas */
         public IActionResult Index() {
             var produto = _context.Produtos.Include(x => x.Categoria).Where(x => x.Categoria.Id == x.CategoriaId).ToList().Take(3);
             return View(produto);
@@ -54,15 +52,11 @@ namespace ProjetoBlueModas.Controllers {
             IEnumerable<Historico> historico = (from h in _context.Historico join c in _context.Cesta on h.CestaId equals c.Id select h);
             return View(historico);
         }
-        /* 
-            Fim Páginas
-        */
+        /* Fim Páginas */
 
 
 
-        /*
-            Ações 
-        */
+        /* Ações */
         public async Task<IActionResult> FecharPedidoRealizado() {
             var cesta = await _context.Cesta.ToListAsync();
             var cliente = await _context.Clientes.ToListAsync();
@@ -167,14 +161,13 @@ namespace ProjetoBlueModas.Controllers {
                 }
             }
         }
-        /*
-            Fim Ações 
-        */
+        /* Fim Ações */
 
-
+        /* Erro */
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        /* Fim Erro */
     }
 }

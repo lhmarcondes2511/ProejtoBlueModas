@@ -18,6 +18,14 @@
     }
 </style>
 
+@if (ViewBag.Message != null) {
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
+
 <div class="lh-title text-center">
     <h3>Criar Produto</h3>
 </div>

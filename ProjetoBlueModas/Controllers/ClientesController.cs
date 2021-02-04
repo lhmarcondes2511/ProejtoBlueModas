@@ -16,12 +16,10 @@ namespace ProjetoBlueModas.Controllers {
             _context = context;
         }
 
-        // GET: Clientes
+        /* Páginas */
         public IActionResult Index() {
             return View();
         }
-
-        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
@@ -35,21 +33,43 @@ namespace ProjetoBlueModas.Controllers {
 
             return View(cliente);
         }
-
-        // GET: Clientes/Create
         public IActionResult Create() {
             return View();
         }
+        public async Task<IActionResult> Edit(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
 
-        // POST: Clientes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var cliente = await _context.Clientes.FindAsync(id);
+            if (cliente == null) {
+                return NotFound();
+            }
+            return View(cliente);
+        }
+        public async Task<IActionResult> Delete(int? id) {
+            if (id == null) {
+                return NotFound();
+            }
+
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.Id == id);
+            if (cliente == null) {
+                return NotFound();
+            }
+
+            return View(cliente);
+        }
+        /* Fim Páginas */
+
+
+
+        /* Ações */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Nome,Email,Telefone")] Cliente cliente) {
             if (ModelState.IsValid) {
                 var cesta = await _context.Cesta.FirstOrDefaultAsync();
-                if(cesta == null) {
+                if (cesta == null) {
                     return NotFound();
                 }
 
@@ -73,22 +93,6 @@ namespace ProjetoBlueModas.Controllers {
             }
         }
 
-        // GET: Clientes/Edit/5
-        public async Task<IActionResult> Edit(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null) {
-                return NotFound();
-            }
-            return View(cliente);
-        }
-
-        // POST: Clientes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Telefone")] Cliente cliente) {
@@ -112,21 +116,6 @@ namespace ProjetoBlueModas.Controllers {
             return View(cliente);
         }
 
-        // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(int? id) {
-            if (id == null) {
-                return NotFound();
-            }
-
-            var cliente = await _context.Clientes.FirstOrDefaultAsync(m => m.Id == id);
-            if (cliente == null) {
-                return NotFound();
-            }
-
-            return View(cliente);
-        }
-
-        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
@@ -139,7 +128,6 @@ namespace ProjetoBlueModas.Controllers {
         private bool ClienteExists(int id) {
             return _context.Clientes.Any(e => e.Id == id);
         }
-
-
+        /* Fim Ações */
     }
 }
