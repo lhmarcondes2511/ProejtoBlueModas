@@ -33,7 +33,7 @@ namespace ProjetoBlueModas.Controllers {
 
 
             if (!String.IsNullOrEmpty(nome)) {
-                produtos = (List<Produto>)produtos.Where(s => s.Nome.ToLower().Contains(nome.ToLower()));
+                produtos = await _context.Produtos.Where(x => x.Nome.ToLower().Contains(nome.ToLower())).ToListAsync();
             }
 
             if (!String.IsNullOrEmpty(categoria)) {
@@ -101,11 +101,9 @@ namespace ProjetoBlueModas.Controllers {
             if (ElementoCesta()) {
                 var cesta = await _context.Cesta.FirstOrDefaultAsync();
                 if (!ExisteNaCesta(produto.Id)) {
-                    resposta = "alert alert-success alert-dismissible show";
                     Inserir(produto.Id, cesta.Protocolo);
                 }else {
                     mudarElemento(produto.Id);
-                    resposta = "alert alert-success alert-dismissible show";
                 }
             } else {
                 var cesta = await _context.Cesta.FirstOrDefaultAsync();

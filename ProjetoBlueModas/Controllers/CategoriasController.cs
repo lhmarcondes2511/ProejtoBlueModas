@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 
@@ -112,9 +113,33 @@ namespace ProjetoBlueModas.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {
             var categoria = await _context.Categoria.FindAsync(id);
-            _context.Categoria.Remove(categoria);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            if (VerificarProduto(categoria.Id) == true) {
+                ViewBag.Message = String.Format("Nao pode ser excluido, pois ele esta relacionado com um Produto");
+                return View(categoria);
+            } else {
+                _context.Categoria.Remove(categoria);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        public bool VerificarProduto(int id) {
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=bluemodas;Trusted_Connection=True;";
+            var result = 0;
+            using (SqlConnection conn = new SqlConnection(connection)) {
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("", conn)) {
+                    command.CommandText = "select COUNT(*) from Produtos where CategoriaId = @id;";
+                    command.Parameters.AddWithValue("@id", id);
+                    result = (int)command.ExecuteScalar();
+                    command.Dispose();
+                }
+                if (result >= 1) {
+                    return true;
+                }
+                return false;
+            }
         }
 
         private bool CategoriaExists(int id) {

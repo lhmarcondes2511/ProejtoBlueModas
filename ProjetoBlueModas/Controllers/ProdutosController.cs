@@ -53,7 +53,7 @@ namespace ProjetoBlueModas.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Img,Codigo,Nome,QuantidadeMaxima,Preco,CategoriaId")] Produto produto) {
             if (ModelState.IsValid) {
-
+                ViewBag.Message = null;
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(produto.Img.FileName);
                 string extension = Path.GetExtension(produto.Img.FileName);
@@ -68,8 +68,10 @@ namespace ProjetoBlueModas.Controllers {
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(produto);
         }
+
         // GET: Produtos/Edit/5
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {

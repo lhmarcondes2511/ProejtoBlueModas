@@ -1,48 +1,58 @@
 ﻿@model ProjetoBlueModas.Models.Produto
 
-@{
-    ViewData["Title"] = "Details";
-}
+<style>
+    @* Imports *@
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-<h1>Details</h1>
+    #Home, #Produto, #Sobre, #Cesta, #Login {
+        display: none;
+    }
 
-<div>
-    <h4>Produto</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Imagem)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Codigo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Codigo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
-        <dt class="col-sm-2">
-            Imagem Baixada
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@("~/Image/"+Model.Imagem)" asp-append-version="true" width="200px" />
-        </dd>
-    </dl>
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-hr {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="lh-title text-center">
+    <h3>Detalhes do Produto</h3>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<hr class="lh-hr" />
+<div class="container">
+    <div class="row">
+        <div class="row col-4 mx-auto">
+            <dt class="col-7">
+                @Html.DisplayNameFor(model => model.Codigo)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.Codigo)
+            </dd>
+            <dt class="col-7">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt class="col-7">
+                @Html.DisplayNameFor(model => model.Preco)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.Preco)
+            </dd>
+            <dt class="col-7">
+                Imagem
+            </dt>
+            <dd class="col-5">
+                <img src="@("~/Image/"+Model.Imagem)" asp-append-version="true" width="200px" />
+            </dd>
+            <div>
+                <a asp-action="Index"><i class="fal fa-angle-left"></i> Voltar</a> |
+                <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,7 +12,7 @@ namespace ProjetoBlueModas.Models {
         public int Id { get; set; }
         
         
-        [Display(Name = "Imagem Nome")]
+        [Display(Name = "Imagem")]
         public string Imagem { get; set; }
 
         [NotMapped]
@@ -24,12 +24,12 @@ namespace ProjetoBlueModas.Models {
         public int Codigo { get; set; }
         
         [Required(ErrorMessage = "O nome do produto é obrigatório", AllowEmptyStrings = false)]
-        [Display(Name = "Nome do Produto")]
+        [Display(Name = "Produto")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Informe o preço do produto", AllowEmptyStrings = false)]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Preço Unitário")]
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
 
         [Required(ErrorMessage = "Selecione uma categoria", AllowEmptyStrings = false)]

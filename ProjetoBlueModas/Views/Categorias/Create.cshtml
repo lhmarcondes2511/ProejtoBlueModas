@@ -1,15 +1,29 @@
 ﻿@model ProjetoBlueModas.Models.Categoria
 
-@{
-    ViewData["Title"] = "Create";
-}
+<style>
+    @* Imports *@
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-<h1>Create</h1>
+    #Home, #Produto, #Sobre, #Cesta, #Login {
+        display: none;
+    }
 
-<h4>Categoria</h4>
-<hr />
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-hr {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="lh-title text-center">
+    <h3>Criar Categoria</h3>
+</div>
+<hr class="lh-hr" />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,16 +31,16 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group text-right">
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
+        <div>
+            <a asp-action="Index"><i class="fal fa-angle-left"></i> Voltar</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
