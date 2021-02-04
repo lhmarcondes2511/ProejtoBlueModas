@@ -1,29 +1,70 @@
 ﻿@model IEnumerable<ProjetoBlueModas.Models.Historico>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<style>
+    @* Imports *@ 
+    @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-<h1>Index</h1>
+    #Home, #Produto, #Sobre, #Cesta, #Login {
+        display: none;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    .lh-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .lh-hr {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="lh-title text-center">
+    <h3>Histórico</h3>
+</div>
+<hr class="lh-hr" />
+<div class="container">
+    @using (Html.BeginForm()) {
+        <form action="/" method="post">
+            <div class="mx-auto row">
+                <div class="form-group col">
+                    @Html.TextBox("protocolo", null, new { @class = "form-control", @placeholder = "Protocolo" })
+                </div>
+                <div class="form-group col">
+                    @Html.TextBox("nomeCliente", null, new { @class = "form-control", @placeholder = "nome do Cliente" })
+                </div>
+                <div class="form-group col">
+                    @Html.TextBox("nomeProduto", null, new { @class = "form-control", @placeholder = "Nome do produto" })
+                </div>
+                <div class="col-lg-2">
+                    <input type="submit" name="submit" class="btn-md btn btn-outline-success" value="Filtrar" />
+                </div>
+            </div>
+        </form>
+    }
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Protocolo)</th>
+                <th>@Html.DisplayNameFor(model => model.NomeCliente)</th>
+                <th>@Html.DisplayNameFor(model => model.TelefoneCliente)</th>
+                <th>@Html.DisplayNameFor(model => model.NomeProduto)</th>
+                <th>@Html.DisplayNameFor(model => model.QuantidadeCesta)</th>
+                <th>@Html.DisplayNameFor(model => model.Data)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Protocolo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomeCliente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TelefoneCliente)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NomeProduto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.QuantidadeCesta)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

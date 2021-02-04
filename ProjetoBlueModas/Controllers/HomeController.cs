@@ -13,6 +13,7 @@ namespace ProjetoBlueModas.Controllers {
     public class HomeController : Controller {
         private readonly BlueModasContext _context;
         long protocolo = 0;
+        string resposta;
 
         public HomeController(BlueModasContext context) {
             _context = context;
@@ -22,12 +23,24 @@ namespace ProjetoBlueModas.Controllers {
         /* 
             Páginas
         */
-        public async Task<IActionResult> Index() {
-            return View(await _context.Produtos.ToListAsync());
+        public IActionResult Index() {
+            var produto = _context.Produtos.Include(x => x.Categoria).Where(x => x.Categoria.Id == x.CategoriaId).ToList().Take(3);
+            return View(produto);
         }
 
-        public async Task<IActionResult> Produto() {
-            return View(await _context.Produtos.ToListAsync());
+        public async Task<IActionResult> Produto(string nome, string categoria) {
+            var produtos = await _context.Produtos.Include(x => x.Categoria).Where(x => x.Categoria.Id == x.CategoriaId).ToListAsync();
+
+
+            if (!String.IsNullOrEmpty(nome)) {
+                produtos = (List<Produto>)produtos.Where(s => s.Nome.ToLower().Contains(nome.ToLower()));
+            }
+
+            if (!String.IsNullOrEmpty(categoria)) {
+                produtos = await _context.Produtos.Include(x => x.Categoria).Where(x => x.Categoria.Nome.ToLower() == categoria.ToLower()).ToListAsync();
+            }
+
+            return View(produtos);
         }
 
         public IActionResult Sobre() {
@@ -74,7 +87,7 @@ namespace ProjetoBlueModas.Controllers {
             }
         }
 
-        public async Task<IActionResult> InserirNaCesta(int? id) {  
+        public async Task<IActionResult> InserirNaCesta(int? id) {
             if (id == null) {
                 return NotFound();
             }
@@ -88,11 +101,14 @@ namespace ProjetoBlueModas.Controllers {
             if (ElementoCesta()) {
                 var cesta = await _context.Cesta.FirstOrDefaultAsync();
                 if (!ExisteNaCesta(produto.Id)) {
+                    resposta = "alert alert-success alert-dismissible show";
                     Inserir(produto.Id, cesta.Protocolo);
                 }else {
                     mudarElemento(produto.Id);
+                    resposta = "alert alert-success alert-dismissible show";
                 }
             } else {
+                var cesta = await _context.Cesta.FirstOrDefaultAsync();
                 DateTime data = DateTime.Now;
                 Random rand = new Random();
                 protocolo = long.Parse(data.ToString("yyyyMMdd") + rand.Next(1000, 9999));

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "67QKlYCRgM8xEEb0XrIrWi+AiZ6QRr5fXiaMnyDV02Ay1IlSxhO+7TKBDG2mgHCDi7t+LRPmRHdw1pYqMi54aA==",
+  "dgSpecHash": "iXxiSiDhyU37Ohma8OQZQqVHmyHnEh4GdsGzFaWzmWC3A+F0B3FT8ps6uawqLmwCkD/WVhDb5MrikEzVigMlug==",
   "success": true,
   "projectFilePath": "C:\\Users\\lksmarcondes_2\\source\\repos\\ProjetoBlueModas\\ProjetoBlueModas\\ProjetoBlueModas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\bootstrap\\3.0.0\\bootstrap.3.0.0.nupkg.sha512",
+    "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\bootstrapnotifications\\0.3.2\\bootstrapnotifications.0.3.2.nupkg.sha512",
     "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\jquery\\1.9.0\\jquery.1.9.0.nupkg.sha512",
     "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\lksmarcondes_2\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.0\\microsoft.aspnetcore.razor.language.5.0.0.nupkg.sha512",

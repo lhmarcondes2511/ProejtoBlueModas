@@ -17,8 +17,21 @@ namespace ProjetoBlueModas.Controllers {
         }
 
         // GET: Historicoes
-        public async Task<IActionResult> Index() {
-            return View(await _context.Historico.ToListAsync());
+        public async Task<IActionResult> Index(string protocolo, string codigo, string nomeCliente, string nomeProduto) {
+            var historico = from m in _context.Historico select m;
+
+            if (protocolo != null) {
+                historico = historico.Where(s => s.Protocolo.ToString().Contains(protocolo));
+            }
+            if (!String.IsNullOrEmpty(nomeCliente)) {
+                historico = historico.Where(s => s.NomeCliente.ToLower().Contains(nomeCliente.ToLower()));
+            }
+            if (!String.IsNullOrEmpty(nomeProduto)) {
+                historico = historico.Where(s => s.NomeProduto.ToLower().Contains(nomeProduto.ToLower()));
+            }
+
+
+            return View(historico);
         }
 
         // GET: Historicoes/Details/5

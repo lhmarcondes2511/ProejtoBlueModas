@@ -1,11 +1,17 @@
 ﻿@model IEnumerable<ProjetoBlueModas.Models.Produto>
 
+
+
 <style>
     @* Imports *@
     @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
     #Dashboard, #ProdutoAdmin, #Categoria, #Historico, #Sair {
         display: none;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     .lh-cards {
@@ -45,9 +51,17 @@
         width: 80%;
         margin-bottom: 20px;
     }
+
+    .lh-alert{
+        position: absolute;
+    }
+
+    .lh-filtragem div {
+        display: inline-block;
+    }
 </style>
 
-<div class="alert alert-success alert-dismissible offset-lg-7 offset-md-6 offset-sm-1 offset-1 col-lg-4 col-md-5 col-sm-10 col-10 d-inline-flex justify-content-between align-items-center fade" role="alert">
+<div class="@ViewBag.AlertSuccess offset-lg-7 offset-md-6 offset-sm-1 offset-1 col-lg-4 col-md-5 col-sm-10 col-10 d-inline-flex justify-content-between align-items-center fade lh-alert" role="alert" id="lh-alert">
     Adicionado com Sucesso!
     <button type="button" class="fal fa-close lh-close" data-dismiss="alert" aria-label="Close" aria-hidden="true"></button>
 </div>
@@ -56,32 +70,47 @@
     <h3>Produtos</h3>
 </div>
 <hr class="lh-hr" />
-<div class="row">
-    <div class="col-12"></div>
-    <div class="col-12 align-items-center">
-        <div class="lh-cards container mx-auto">
-            @foreach (var item in Model) {
-                <div class="lh-card card text-center">
-                    <img class="card-img-top" src="~/image/@item.Imagem" asp-append-version="true" />
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
-                        <h6 class="text-left lh-categoria">
-                            <b>Categoria: </b> @Html.DisplayFor(modelItem => item.CategoriaId)
-                        </h6>
-                        <h6 class="lh-preco text-right">@Html.DisplayFor(modelItem => item.Preco)</h6>
-                        <div class="text-right">
-                            <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Home" asp-action="InserirNaCesta" asp-route-id="@item.Id">+ Adicionar na cesta</a>
+<div class="container">
+    @using (Html.BeginForm()) {
+        <form action="/" method="post">
+            <div class="mx-auto row">
+                <div class="form-group col">
+                    @Html.TextBox("nome", null, new { @class = "form-control", @placeholder = "Nome do produto" })
+                </div>
+                <div class="form-group col">
+                    @Html.TextBox("categoria", null, new { @class = "form-control", @placeholder = "Categoria" })
+                </div>
+                <div class="col">
+                    <input type="submit" name="submit" class="btn-md btn btn-outline-success" value="Filtrar" />
+                </div>
+            </div>
+        </form>
+    }
+    </div>
+    <div class="row">
+        <div class="col-12"></div>
+        <div class="col-12 text-center">
+            <div class="lh-cards">
+                @foreach (var item in Model) {
+                    <div class="lh-card card text-center">
+                        <img class="card-img-top" src="~/image/@item.Imagem" asp-append-version="true" />
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                            <h6 class="text-left lh-categoria">
+                                <b>Categoria: </b> @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                            </h6>
+                            <h6 class="lh-preco text-right">@Html.DisplayFor(modelItem => item.Preco)</h6>
+                            <div class="text-right">
+                                <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Home" asp-action="InserirNaCesta" asp-route-id="@item.Id">+ Adicionar na cesta</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
-</div>
 
 
-<script>
-    $('.collapse').collapse();
-
-    $('.lh-alert').addClass('d-none');
-</script>
+    <script>
+        $('.collapse').collapse();
+    </script>

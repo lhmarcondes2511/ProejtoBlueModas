@@ -27,10 +27,6 @@ namespace ProjetoBlueModas.Models {
         [Display(Name = "Nome do Produto")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "A quantidade do produto é obrigatório", AllowEmptyStrings = false)]
-        [Display(Name = "Quantidade Disponível")]
-        public int QuantidadeMaxima { get; set; }
-
         [Required(ErrorMessage = "Informe o preço do produto", AllowEmptyStrings = false)]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = true)]
         [Display(Name = "Preço Unitário")]
@@ -43,12 +39,11 @@ namespace ProjetoBlueModas.Models {
 
         public Produto() { }
 
-        public Produto(int id, string imagem, int codigo, string nome, int quantidadeMaxima, decimal preco, int categoriaId, Categoria categoria) {
+        public Produto(int id, string imagem, int codigo, string nome, decimal preco, int categoriaId, Categoria categoria) {
             Id = id;
             Imagem = imagem;
             Codigo = codigo;
             Nome = nome;
-            QuantidadeMaxima = quantidadeMaxima;
             Preco = preco;
             CategoriaId = categoriaId;
             Categoria = categoria;

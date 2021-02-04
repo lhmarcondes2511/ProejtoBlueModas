@@ -17,7 +17,7 @@ namespace ProjetoBlueModas.Controllers {
         SqlConnection con = new SqlConnection();
         SqlCommand com = new SqlCommand();
         SqlDataReader dr;
-
+        string resposta = null;
 
 
 
@@ -59,7 +59,7 @@ namespace ProjetoBlueModas.Controllers {
             return View();
         }
         [Authorize]
-        public IActionResult Dashboard() {
+        public async Task<IActionResult> Dashboard() {
             if (!User.Identity.IsAuthenticated) {
                 return RedirectToAction("Index");
             }
@@ -94,7 +94,7 @@ namespace ProjetoBlueModas.Controllers {
                     return RedirectToAction("Dashboard");
                 } else {
                     con.Close();
-                    ViewBag.Message = string.Format("E-mail ou senha estao incorretos. Tente novamente");
+                    resposta = string.Format("E-mail ou senha estao incorretos. Tente novamente");
                     return View("Index");
                 }
             } else {
