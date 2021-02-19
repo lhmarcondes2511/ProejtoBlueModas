@@ -99,7 +99,7 @@
                 @foreach (var item in Model) {
                     <div class="lh-card card text-center">
                         <div class="lh-img">
-                            <img class="card-img-top" src="~/image/@item.Imagem" asp-append-version="true" />
+                            <img class="card-img-top img-fluid" src="~/image/@item.Imagem" asp-append-version="true" />
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>

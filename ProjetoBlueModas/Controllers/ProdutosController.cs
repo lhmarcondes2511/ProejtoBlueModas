@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using ProjetoBlueModas.Data;
 
 namespace ProjetoBlueModas.Controllers {
     public class ProdutosController : Controller {

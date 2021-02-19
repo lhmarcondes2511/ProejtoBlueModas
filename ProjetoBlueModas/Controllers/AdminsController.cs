@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using ProjetoBlueModas.Data;
 using ProjetoBlueModas.Models;
 using System;
 using System.Collections.Generic;

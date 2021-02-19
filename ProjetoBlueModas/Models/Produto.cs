@@ -39,13 +39,11 @@ namespace ProjetoBlueModas.Models {
 
         public Produto() { }
 
-        public Produto(int id, string imagem, int codigo, string nome, decimal preco, int categoriaId, Categoria categoria) {
-            Id = id;
+        public Produto(string imagem, int codigo, string nome, decimal preco, Categoria categoria) {
             Imagem = imagem;
             Codigo = codigo;
             Nome = nome;
             Preco = preco;
-            CategoriaId = categoriaId;
             Categoria = categoria;
         }
     }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using ProjetoBlueModas.Data;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Migrations

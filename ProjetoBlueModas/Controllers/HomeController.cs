@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using ProjetoBlueModas.Data;
 using ProjetoBlueModas.Models;
 using System;
 using System.Collections.Generic;

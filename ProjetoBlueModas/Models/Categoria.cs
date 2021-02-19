@@ -11,5 +11,11 @@ namespace ProjetoBlueModas.Models {
         [Display(Name = "Nome da Categoria")]
         public string Nome { get; set; }
         public List<Produto> Produto { get; set; }
+
+        public Categoria() {}
+
+        public Categoria(string nome) {
+            Nome = nome;
+        }
     }
 }

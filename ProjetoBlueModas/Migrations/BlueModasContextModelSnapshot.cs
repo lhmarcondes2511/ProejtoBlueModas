@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProjetoBlueModas.Models;
+using ProjetoBlueModas.Data;
 
 namespace ProjetoBlueModas.Migrations
 {

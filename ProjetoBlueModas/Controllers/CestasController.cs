@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using ProjetoBlueModas.Data;
 using ProjetoBlueModas.Models;
 
 namespace ProjetoBlueModas.Controllers {

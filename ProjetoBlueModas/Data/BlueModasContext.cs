@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjetoBlueModas.Models;
 
-namespace ProjetoBlueModas.Models {
+namespace ProjetoBlueModas.Data {
     public class BlueModasContext : DbContext {
         public BlueModasContext(DbContextOptions<BlueModasContext> options) : base(options) { }
 
