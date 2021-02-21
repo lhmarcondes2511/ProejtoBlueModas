@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<ProjetoBlueModas.Models.Produto>
 
-
+@{
+    ViewData["Title"] = "Produto";
+}
 
 <style>
     @* Imports *@
@@ -91,33 +93,33 @@
             </div>
         </form>
     }
-    </div>
-    <div class="row">
-        <div class="col-12"></div>
-        <div class="col-12 text-center">
-            <div class="lh-cards">
-                @foreach (var item in Model) {
-                    <div class="lh-card card text-center">
-                        <div class="lh-img">
-                            <img class="card-img-top img-fluid" src="~/image/@item.Imagem" asp-append-version="true" />
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
-                            <h6 class="text-left lh-categoria">
-                                <b>Categoria: </b> @Html.DisplayFor(modelItem => item.Categoria.Nome)
-                            </h6>
-                            <h6 class="lh-preco text-right">@Html.DisplayFor(modelItem => item.Preco)</h6>
-                            <div class="text-right">
-                                <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Home" asp-action="InserirNaCesta" asp-route-id="@item.Id">+ Adicionar na cesta</a>
-                            </div>
+</div>
+<div class="row">
+    <div class="col-12"></div>
+    <div class="col-12 text-center">
+        <div class="lh-cards">
+            @foreach (var item in Model) {
+                <div class="lh-card card text-center">
+                    <div class="lh-img">
+                        <img class="card-img-top img-fluid" src="~/image/@item.Imagem" asp-append-version="true" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <h6 class="text-left lh-categoria">
+                            <b>Categoria: </b> @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                        </h6>
+                        <h6 class="lh-preco text-right">@Html.DisplayFor(modelItem => item.Preco)</h6>
+                        <div class="text-right">
+                            <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Home" asp-action="InserirNaCesta" asp-route-id="@item.Id">+ Adicionar na cesta</a>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
+</div>
 
 
-    <script>
-        $('.collapse').collapse();
-    </script>
+<script>
+    $('.collapse').collapse();
+</script>

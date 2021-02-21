@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<ProjetoBlueModas.Models.Produto>
 
+@{
+    ViewData["Title"] = "Index";
+}
+
 <style>
     @* Imports *@
     @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
@@ -42,7 +46,7 @@
     .lh-categoria, .lh-preco {
         font-size: 10pt;
     }
-    
+
     .lh-preco {
         color: darkgreen;
     }

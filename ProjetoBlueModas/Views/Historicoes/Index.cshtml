@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<ProjetoBlueModas.Models.Historico>
 
+@{
+    ViewData["Title"] = "Historico";
+}
+
 <style>
-    @* Imports *@ 
+    @* Imports *@
     @@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
     #Home, #Produto, #Sobre, #Cesta, #Login {
@@ -62,9 +66,9 @@
                     <td>@Html.DisplayFor(modelItem => item.QuantidadeCesta)</td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Data)
-                </td>
-            </tr>
-        }
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
